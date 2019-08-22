@@ -1,0 +1,36 @@
+private static Logger log = Logger.getLogger(Emp.class);
+log.trace("开始启动了-------------");
+new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
+log.info("启动成功");  System.in.read();
+ <nav>
+	<ul class="pagination">
+		<li class="page-item">
+		   <a class="page-link"href="/list?pageNum=1">首页</a>
+		</li>
+		<c:if test="${page.size>0}">
+			<li class="page-item">
+				<a class="page-link"href="/list?pageNum=${page.size-1}">上一页</a>
+			</li>
+		</c:if>
+		<c:if test="${page.size<page.navigateLastPage}">
+			<li class="page-item">
+			<a class="page-link" href="/list?pageNum=${page.size+1}">下一页</a>
+			</li>
+		</c:if>
+		<li class="page-item">
+		  <a class="page-link" href="/list?pageNum=${page.navigateLastPage}">尾页</a>
+		</li>
+	</ul>
+	</nav>
+	function change(obj, a)var pid = 1;
+			if (obj == 'null') {
+				pid = 1;} else {
+				pid = $(obj).val();}
+			$.ajax({url : "list?pid=" + pid,type : "post",
+				success : function(datas) {
+					$(a).empty();$(a).append("<option value='0'>请选择</option")
+					for ( var i in datas) {
+						$(a).append(
+								"<option value='"+datas[i].id+"'>"+ datas[i].cityname + "</option>");
+
+
